@@ -1,0 +1,2 @@
+rootProject.name='PlateForme_Thot_Mobile'
+include ':app'
