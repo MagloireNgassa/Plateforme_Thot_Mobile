@@ -45,6 +45,36 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:id="@+id/email"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INSCRIPTION"
+            android:id="@+id/inscription"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SE CONNECTER"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/forgot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PASSWORD OUBLIÉ"
+                android:textSize="16sp"
+                android:layout_marginLeft="30px"
+                android:textColor="#1E6E91"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
