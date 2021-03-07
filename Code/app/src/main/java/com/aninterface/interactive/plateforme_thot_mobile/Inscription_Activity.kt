@@ -6,10 +6,31 @@ import androidx.appcompat.app.AlertDialog
 
 class Inscription_Activity : AppCompatActivity() {
 
+    lateinit var reponses: String
+    fun  reponse(reponse:String)
+    {
+        this.reponses = reponse
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inscription_)
 
+        val etudiant = intent.getParcelableExtra<Etudiant> ("etud")
+        val etudiant1 : Etudiant = Etudiant("Magloire","ngassa","primaire","mag_2kjhg")
+        val r1 : BackWorkerIns = BackWorkerIns(this,etudiant1)
+        val t : Thread = Thread(r1)
+        t.start();
+
+        if(reponses.equals("reussi"))
+        {
+            etudiant1.envoie_message_confirmation(this)
+        }
+
+        else
+        {
+            etudiant1.message_erreur_enregistrement(this)
+        }
 
     }
 }

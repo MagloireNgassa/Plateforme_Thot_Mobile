@@ -17,22 +17,24 @@ public class BackWorkerIns implements Runnable {
     private String email;
     private String login;
     private String password;
-    private Etudiant main;
+    private Inscription_Activity activity;
 
-    public BackWorkerIns(String nom,String prenom, String niveau_scolaire, String email, Etudiant main)
+
+    public BackWorkerIns( Inscription_Activity activity, Etudiant etudiant)
     {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.niveau_scolaire = niveau_scolaire;
-        this.email = email;
-        this.login = email;
-        this.password = nom +"12345";
-        this.main = main;
+        this.nom = etudiant.getNom();
+        this.prenom = etudiant.getPrenom();
+        this.niveau_scolaire = etudiant.getNiveau_scolaire();
+        this.email = etudiant.getEmail();
+        this.login = etudiant.getEmail();
+        this.password = etudiant.getNom() +"12345";
+        this.activity = activity;
+
     }
     @Override
     public void run() {
-        String cible = "http://192.168.1.105/APP_Mob/Labo2_BD2/requetes_inscription.php";
-        String reponse;
+        String cible = "http://192.168.2.11/APP_Mob/plateforme_Thot/inscription.php";
+        String runReponse;
         try
         {
             URL url = new URL(cible);
@@ -50,6 +52,8 @@ public class BackWorkerIns implements Runnable {
                     URLEncoder.encode((String)this.prenom,"utf8")+"&"+
                     URLEncoder.encode("niveau_scolaire","utf-8")+"="+
                     URLEncoder.encode((String)this.niveau_scolaire,"utf8")+"&"+
+                    URLEncoder.encode("email","utf-8")+"="+
+                    URLEncoder.encode((String)this.email,"utf8")+"&"+
                     URLEncoder.encode("login","utf-8")+"="+
                     URLEncoder.encode((String)this.login,"utf8")+"&"+
                     URLEncoder.encode("password","utf-8")+"="+
@@ -67,16 +71,16 @@ public class BackWorkerIns implements Runnable {
 
             while ((line = bufr.readLine()) !=null)
             {
-                sbuff.append(line + "\n");
+                sbuff.append(line );
             }
-             reponse = sbuff.toString();
+             runReponse = sbuff.toString();
         }
         catch (Exception ex)
         {
-             reponse = ex.getMessage();
+             runReponse = ex.getMessage();
         }
 
-        this.main.traitement_info_enregistrement(reponse);
+        this.activity.reponse(runReponse);
 
     }
 }

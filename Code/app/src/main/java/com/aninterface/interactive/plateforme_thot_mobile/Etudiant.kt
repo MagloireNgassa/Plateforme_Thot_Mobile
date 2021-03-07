@@ -4,12 +4,15 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.View
 import android.widget.Toast
 
-class Etudiant(var nom: String, var prenom:String, var niveau_scolaire:String, var email:String, var reponses:String )
+class Etudiant(var nom: String, var prenom:String, var niveau_scolaire:String, var email:String):
+    Parcelable
 {
-
+    constructor( nom: String,  prenom:String,  niveau_scolaire:String,  email:String,reponses:String):this(nom,prenom,niveau_scolaire,email)
 
     fun verification_mail()
      {
@@ -25,13 +28,25 @@ class Etudiant(var nom: String, var prenom:String, var niveau_scolaire:String, v
         ad.show()
     }
 
-    fun traitement_info_enregistrement(reponse: String)
+    fun traitement_info_enregistrement(reponse: String): Boolean
     {
-        this.reponses = reponse
+        val reponses: String  = reponse
+        if (reponses.equals("reussi"))
+            return true
+        else
+            return false
     }
 
     val positiveButtonClick = { dialog: DialogInterface, which: Int ->
         dialog.cancel()
+    }
+
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
     }
 
     fun message_erreur_enregistrement(context: Context)
@@ -56,6 +71,27 @@ class Etudiant(var nom: String, var prenom:String, var niveau_scolaire:String, v
     fun envoie_message_confirmation(context: Context)
     {
         Toast.makeText(context,"Inscription reussi Bievenue Mr "+this.nom,Toast.LENGTH_LONG).show()
+    }
+//override parcellable
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(nom)
+        parcel.writeString(prenom)
+        parcel.writeString(niveau_scolaire)
+        parcel.writeString(email)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Etudiant> {
+        override fun createFromParcel(parcel: Parcel): Etudiant {
+            return Etudiant(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Etudiant?> {
+            return arrayOfNulls(size)
+        }
     }
 
 }
