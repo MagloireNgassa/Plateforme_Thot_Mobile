@@ -27,6 +27,10 @@ class Inscription_Activity : AppCompatActivity() {
             etudiant1.envoie_message_confirmation(this)
         }
 
+        else if (reponses.equals("doublon"))
+        {
+           etudiant. message_erreur_doublon_mail(this)
+        }
         else
         {
             etudiant1.message_erreur_enregistrement(this)
