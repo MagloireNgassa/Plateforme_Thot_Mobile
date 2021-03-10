@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Connexion"
+            android:text="Première connexion"
             android:textColor="#1E6E91"
             android:textSize="25dp"
             android:layout_marginTop="20dp"/>
@@ -36,20 +36,20 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:id="@+id/username" />
+            android:hint="Nouveau UserName"
+            android:id="@+id/newUsername" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
-            android:hint="Password"/>
+            android:id="@+id/newPassword"
+            android:hint="Nouveau Password"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CONNEXION"
-            android:id="@+id/connexion"/>
+            android:text="UPDATE"
+            android:id="@+id/update"/>
 
 
     </LinearLayout>

@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         Email = findViewById<EditText>(R.id.email)
         txv = findViewById<TextView>(R.id.forgot)
 
-        val etud : Etudiant = Etudiant(Nom.getText().toString(),Prenom.getText().toString(),
-                                        Niveau_scolaire.getText().toString(),Email.getText().toString())
+        val etud : Etudiant = Etudiant(Nom.text.toString(),Prenom.text.toString(),
+                                        Niveau_scolaire.text.toString(),Email.text.toString())
 
         txv.setOnClickListener {
 
