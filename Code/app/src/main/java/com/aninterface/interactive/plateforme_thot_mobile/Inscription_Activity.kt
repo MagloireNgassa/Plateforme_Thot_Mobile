@@ -18,22 +18,22 @@ class Inscription_Activity : AppCompatActivity() {
 
         val etudiant = intent.getParcelableExtra<Etudiant> ("etud")
         val etudiant1 : Etudiant = Etudiant("Magloire","ngassa","primaire","mag_2kjhg")
-        val r1 : BackWorkerIns = BackWorkerIns(this,etudiant1)
+        val r1 : BackWorkerIns = BackWorkerIns(this,etudiant)
         val t : Thread = Thread(r1)
         t.start();
 
         if(reponses.equals("reussi"))
         {
-            etudiant1.envoie_message_confirmation(this)
+            //etudiant1.envoie_message_confirmation(this)
         }
 
         else if (reponses.equals("doublon"))
         {
-           etudiant. message_erreur_doublon_mail(this)
+           //etudiant. message_erreur_doublon_mail(this)
         }
         else
         {
-            etudiant1.message_erreur_enregistrement(this)
+            //etudiant1.message_erreur_enregistrement(this)
         }
 
     }

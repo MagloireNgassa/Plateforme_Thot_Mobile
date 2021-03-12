@@ -37,21 +37,21 @@ class MainActivity : AppCompatActivity() {
 
         txv.setOnClickListener {
 
-            val forgotIntent = Intent (applicationContext, Password_Forgot_Activity :: class. java )
+            val forgotIntent = Intent (applicationContext, Password_Forgot_Activity :: class.java )
             startActivity (forgotIntent)
         }
 
         btn = findViewById <Button> (R.id.login )
         btn.setOnClickListener {
 
-            val connecterIntent = Intent (applicationContext, Connecter_Activity :: class. java )
+            val connecterIntent = Intent (applicationContext, Connecter_Activity :: class.java )
             startActivity (connecterIntent)
         }
 
         insc = findViewById <Button> (R.id.inscription )
         insc.setOnClickListener {
 
-            val inscriptionIntent = Intent (applicationContext, Inscription_Activity :: class. java )
+            val inscriptionIntent = Intent (applicationContext, Inscription_Activity :: class.java )
             inscriptionIntent.putExtra("etud",etud)
             startActivity (inscriptionIntent)
         }

@@ -14,10 +14,7 @@ class Etudiant(var nom: String, var prenom:String, var niveau_scolaire:String, v
 {
     constructor( nom: String,  prenom:String,  niveau_scolaire:String,  email:String,reponses:String):this(nom,prenom,niveau_scolaire,email)
 
-    fun verification_mail()
-     {
 
-     }
 
     fun message_erreur_doublon_mail(context: Context)
     {
